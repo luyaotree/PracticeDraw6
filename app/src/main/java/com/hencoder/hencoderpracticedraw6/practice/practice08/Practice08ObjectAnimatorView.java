@@ -34,7 +34,12 @@ public class Practice08ObjectAnimatorView extends View {
 
     {
         paint.setTextSize(dpToPixel(40));
-        paint.setTextAlign(Paint.Align.CENTER);
+        paint.setTextAlign(Paint.Align.CENTER); // 文字居中对齐，参照x,y坐标
+    }
+
+    public void setProgress(float progress) {
+        this.progress = progress;
+        invalidate();
     }
 
     @Override
@@ -45,8 +50,8 @@ public class Practice08ObjectAnimatorView extends View {
         float centerY = getHeight() / 2;
 
         paint.setColor(Color.parseColor("#E91E63"));
-        paint.setStyle(Paint.Style.STROKE);
-        paint.setStrokeCap(Paint.Cap.ROUND);
+        paint.setStyle(Paint.Style.STROKE);     // 画线模式,否则就是实心的了
+        paint.setStrokeCap(Paint.Cap.ROUND);    // 端点为圆头 (ROUND)
         paint.setStrokeWidth(dpToPixel(15));
         arcRectF.set(centerX - radius, centerY - radius, centerX + radius, centerY + radius);
         canvas.drawArc(arcRectF, 135, progress * 2.7f, false, paint);
